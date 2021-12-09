@@ -1,0 +1,23 @@
+<!-- curlycurlyless figure "networks_img-name-with-extension.ext" Resize "300x" Photo "The Title of The Photo" greatercurlycurly -->
+
+
+{{ "<!-- ENTERING shortcode figure.html -->" | safeHTML }}
+{{ $images := .Page.Resources.ByType "image" }}
+{{ $srcset := "360|(max-width: 37.5em) 360px,720|(min-width: 75em) 720px,1920|(min-width: 112.5em) 1200px" }}
+{{- $original := $images.GetMatch (.Get 0) -}}
+{{- $command := .Get 1 -}}
+{{- $options := .Get 2 -}}
+{{- $type := .Get 3 -}}
+{{- $title := .Get 4 -}}
+{{- if eq $command "Fit" -}}
+{{- .Scratch.Set "image" ($original.Fit $options) -}}
+{{- else if eq $command "Resize" -}}
+{{- .Scratch.Set "image" ($original.Resize $options) -}}
+{{- else if eq $command "Fill" -}}
+{{- .Scratch.Set "image" ($original.Fill $options) -}}
+{{- else -}}
+{{- errorf "Invalid image processing command: Must be one of Fit, Fill or Resize." -}}
+{{- end -}}
+{{- $image := .Scratch.Get "image" -}}
+<figure class="tc grow">
+  <a href="{{ $original.RelPermalink }}" title="{{ $title }}">

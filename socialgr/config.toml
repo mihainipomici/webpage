@@ -1,0 +1,14 @@
+baseURL = 'http://mihainipomici.github.io/'
+title = "South Park Awesome Networks!"
+theme = "hyde"
+publishDir = "docs"
+[Menus]
+  main = [
+      {Name = "Data Source: South Park Archives", URL = "https://southpark.fandom.com/wiki/South_Park_Archives"},
+      {Name = "Data Analysis: check out this Notebook!", URL = "https://github.com/TeoAndB/SouthPark_NetworkAnalysis"}
+  ]
+[params]
+  description = "We come to present you the best networks and text analysis from the South Park  Wiki Archives.  Respect our authoritah!"
+  themeColor = "theme-base-08"
+  layoutReverse = true
+
